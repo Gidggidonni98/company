@@ -1,5 +1,25 @@
+const getOfficeById = async id => {
+    return await $.ajax({
+        type: 'GET',
+        url: 'http://localhost:4000/offices/' + id
+    }).done(res => res);
+};
+const getDetails = async id => {
+    let office = await getOfficeById(id);
 
 
+    document.getElementById('office_code').value = office.office[0].office_code;
+    document.getElementById('adress').value = office.office[0].adress;
+
+};
+const getInfoUpdate = async id => {
+    let office = await getOfficeById(id);
+
+    document.getElementById('id_update').value = id;
+    document.getElementById('office_code_update').value = office.office[0].office_code;
+    document.getElementById('adress_update').value = office.office[0].adress;
+
+};
 const fill = listOffice => {
     let table = "";
 
@@ -28,30 +48,40 @@ const fill = listOffice => {
     }
     $(`#table > tbody`).html(table);
 };
-
 const getOffices = () => {
     $.ajax({
         type: 'GET',
-        
+
         url: 'http://localhost:4000/offices'
     }).done(res => {
 
         fill(res.listOffice);
     });
 };
-const registerEmployee = async() =>{
+const registerOffice = async () => {
     let office_code = document.getElementById('office_code_register').value;
     let adress = document.getElementById('adress_register').value;
-  
 
     await $.ajax({
         type: 'POST',
-        url: 'http://localhost:4000/offices/create' ,
-        data:  {office_code, adress }
-    }).done(function(res){
+        url: 'http://localhost:4000/offices/create',
+        data: { office_code, adress }
+    }).done(function (res) {
         getOffices();
-        
+
     });
 };
+const updateOffice = async () => {
+    let id = document.getElementById('id_update').value;
+    let office_code = document.getElementById('office_code_update').value;
+    let adress = document.getElementById('adress_update').value;
 
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:4000/offices/update/' + id,
+        data: { office_code, adress }
+    }).done(function (res) {
+        getOffices();
+    });
+};
 getOffices();

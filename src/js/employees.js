@@ -5,22 +5,21 @@ const getEmployeeById = async id => {
     }).done(res => res);
 };
 const getId = async id => {
-    document.getElementById("id_delete").value = id ;
-    console.log(id_delete);
-    console.log(document.getElementById("id_delete").value);
-    
+    document.getElementById("id_delete").value = id;
+
+
 
 };
-const getDetails = async id =>{
+const getDetails = async id => {
     let employee = await getEmployeeById(id);
     var f = new Date(employee.employee[0].registered.date).toLocaleString();
-    if(employee.employee[0].updated == null){
-        var h= "No ha habido actualización";
-     }else{
-        var h = new Date(employee.employee[0].updated.date).toLocaleString() ;
-     };
- 
- 
+    if (employee.employee[0].updated == null) {
+        var h = "No ha habido actualización";
+    } else {
+        var h = new Date(employee.employee[0].updated.date).toLocaleString();
+    };
+
+
     document.getElementById('name').value = employee.employee[0].name;
     document.getElementById('adress').value = employee.employee[0].adress;
     document.getElementById('salary').value = employee.employee[0].salary;
@@ -28,14 +27,14 @@ const getDetails = async id =>{
     document.getElementById('updated').value = h;
     document.getElementById('status').value = employee.employee[0].status ? "Activo" : "Inactivo";
     document.getElementById('id_office').value = employee.employee[0].id_office;
- };
- const getInfoUpdate = async id =>{
+};
+const getInfoUpdate = async id => {
     let employee = await getEmployeeById(id);
     var f = new Date(employee.employee[0].registered.date).toLocaleString();
-   if(employee.employee[0].updated == null){
-       var h= "No ha habido actualización";
-    }else{
-       var h = new Date(employee.employee[0].updated.date).toLocaleString() ;
+    if (employee.employee[0].updated == null) {
+        var h = "No ha habido actualización";
+    } else {
+        var h = new Date(employee.employee[0].updated.date).toLocaleString();
     };
 
     document.getElementById('id_update').value = id;
@@ -121,12 +120,11 @@ const deleteEmployee = async () => {
         type: 'GET',
         url: 'http://localhost/company/employees/public/index.php/employee/delete/' + id
     }).done(res => {
-        console.log(res);
         getEmployees();
-    
+
     });
 };
-const registerEmployee = async() =>{
+const registerEmployee = async () => {
     let name = document.getElementById('name_register').value;
     let adress = document.getElementById('adress_register').value;
     let salary = document.getElementById('salary_register').value;
@@ -134,11 +132,11 @@ const registerEmployee = async() =>{
 
     await $.ajax({
         type: 'POST',
-        url: 'http://localhost/company/employees/public/index.php/employee/create' ,
-        data: {name, adress,salary, id_office}
-    }).done(function(res){
+        url: 'http://localhost/company/employees/public/index.php/employee/create',
+        data: { name, adress, salary, id_office }
+    }).done(function (res) {
         getEmployees();
-        
+
     });
 };
 

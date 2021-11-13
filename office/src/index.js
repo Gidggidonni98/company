@@ -1,4 +1,4 @@
-const express = require ('express');
+const express = require('express');
 const morgan = require('morgan');
 
 //ininicializaciones
@@ -9,7 +9,7 @@ app.set('port', process.env.PORT || 4000);
 
 //Middelware
 app.use(morgan('dev'));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -22,10 +22,10 @@ app.use((req, res, next) => {
 
 //routes
 app.use(require('./routes/index.js'));
-app.use('/offices',require('./routes/offices.js'));
+app.use('/offices', require('./routes/offices.js'));
 
 
 //starting server
-app.listen(app.get('port'), () =>{
-	console.log("Server on port", app.get('port'));
+app.listen(app.get('port'), () => {
+    console.log("Server on port", app.get('port'));
 });
