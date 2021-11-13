@@ -5,7 +5,10 @@ const getEmployeeById = async id => {
     }).done(res => res);
 };
 const getId = async id => {
-    document.getElementById("id_delete").value = id;
+    document.getElementById("id_delete").value = id ;
+    console.log(id_delete);
+    console.log(document.getElementById("id_delete").value);
+    
 
 };
 const getDetails = async id =>{
@@ -25,7 +28,7 @@ const getDetails = async id =>{
     document.getElementById('updated').value = h;
     document.getElementById('status').value = employee.employee[0].status ? "Activo" : "Inactivo";
     document.getElementById('id_office').value = employee.employee[0].id_office;
- }
+ };
  const getInfoUpdate = async id =>{
     let employee = await getEmployeeById(id);
     var f = new Date(employee.employee[0].registered.date).toLocaleString();
@@ -112,12 +115,13 @@ const updateEmployee = async () => {
         getEmployees();
     });
 };
-const deleteEmployee = async (id) => {
+const deleteEmployee = async () => {
+    let id = document.getElementById("id_delete").value;
     await $.ajax({
-        type: 'DELETE',
-        url: 'http://localhost/company/employees/public/index.php/employee/delete/' + id,
+        type: 'GET',
+        url: 'http://localhost/company/employees/public/index.php/employee/delete/' + id
     }).done(res => {
-        console.log("holis");
+        console.log(res);
         getEmployees();
     
     });

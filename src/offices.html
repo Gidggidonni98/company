@@ -11,6 +11,9 @@
     <title>Company</title>
 </head>
 <body>
+
+  <!--                  NAV              -->
+
 <nav>
     <div class="container-fluid" style="margin-top: 20px;">
         <ul class="nav nav-pills nav-fill">
@@ -27,8 +30,58 @@
    
 </nav>
 
+  <!--                  REGISTRO              -->
 
+<section>
+  <div class="container">
+    <div style="margin-left: 25%; margin-top: 30px; margin-bottom: 30px;">
+        <div class="card text-center card text-dark bg-light mb-3" style="padding-top: 25px; width: 70%;">
+            <div class="card-header" >
+                <h4>Registro de empleados</h4>
+            </div>
+            <div class="card-body">
+                <form action="javascript:void(0);" onsubmit="registerEmployee();">
+                    <div class="row">
+                        <div class="col-4">
+                            <label  class="form-label">Codigo de la oficina</label>
+                            <input type="text" class="form-control" id="office_code_register" aria-describedby="name_register">                            
+                        </div>
+                        <div class="col-8">
+                            <label  class="form-label">Direccion</label>
+                            <input type="text" class="form-control" id="adress_register" aria-describedby="street_register">
+                        </div>
+                       
+                    </div>
+                    <br>
+                    <button id="registrar" class="btn btn-success " style="float: right;" type="submit">Registrar</button>
+                </form>
+            </div>
+    </div>
+    
+</div>
+</div>
+</section>
 
+  <!--                 TABLA REGISTROS OFFICES              -->
+
+  <section style="margin-top: 30px;">
+
+    <div class="container-fluid">
+      <table id="table" class="table table-bordered table-secondary ">
+        <thead>
+          <tr class="table-dark">
+            <th>#</th>
+            <th>Codigo de oficina</th>
+            <th>Direccion</th>
+            <th style="text-align: center;">Detalles</th>
+            <th style="text-align: center;">Actualizar</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+    </div>
+  </section>
 
 
 
@@ -40,6 +93,6 @@
       <!-- BOOTSTRAP -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       <!-- CUSTOM -->
-      <script src="./js/main.js"></script>
+      <script src="./js/offices.js"></script>
 </body>
 </html>

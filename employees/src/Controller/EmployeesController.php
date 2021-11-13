@@ -76,8 +76,8 @@ class EmployeesController extends AbstractController{
         $employee=$query->getResult();
         $data = [
             'status' => 200,
-            'message' => 'Se ha dado de baja el empleado correctamente',
-            'employee' => $employee
+            'message' => 'Se ha dado de baja el empleado  correctamente',
+            'employee' => $employee 
         ];
         return new JsonResponse ($data);
     }
